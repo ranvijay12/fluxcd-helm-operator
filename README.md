@@ -18,6 +18,11 @@ helm upgrade -i helm-operator fluxcd/helm-operator --wait \
 --set git.ssh.secretName=flux-git-deploy \
 --set helm.versions=v3
 
+Uploading chart in current repo
+
+
+
+
 
 
 
