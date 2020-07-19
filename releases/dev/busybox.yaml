@@ -1,1 +1,19 @@
-
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: nginx
+  namespace: dev
+spec:
+  releaseName: nginx
+  chart:
+    git: git@github.com:ranvijay12/fluxcd-helm-operator.git
+    path: charts/podinfo
+    ref: master
+  values:
+    image:
+      repository: nginx
+      tag: stable-alpine
+    replicaCount: 1
+    hpa:
+      enabled: false
