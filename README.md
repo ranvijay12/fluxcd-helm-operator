@@ -18,7 +18,19 @@ helm upgrade -i helm-operator fluxcd/helm-operator --wait \
 --set git.ssh.secretName=flux-git-deploy \
 --set helm.versions=v3
 
-Uploading chart in current repo
+Create a chart in current repo 
+chart -|
+       | -> templates
+       | -> Chart.yaml
+       | -> README.md
+       | -> values.yaml
+       
+Create helm release in the specific ns folder to differnetiate release for every ns
+
+releases -|
+          | -> dev -> podinfo.yaml
+          | -> stg -> podinfo.yaml
+          | -> prd -> podinfo.yaml
 
 
 
