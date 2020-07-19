@@ -8,7 +8,7 @@ spec:
   releaseName: nginx
   chart:
     git: git@github.com:ranvijay12/fluxcd-helm-operator.git
-    path: charts/podinfo
+    path: webservice
     ref: master
   values:
     image:
