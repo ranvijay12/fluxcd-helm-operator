@@ -13,7 +13,7 @@ spec:
   values:
     image:
       repository: nginx
-      tag: stable-alpine
+      tag: latest
     replicaCount: 1
     hpa:
       enabled: false
