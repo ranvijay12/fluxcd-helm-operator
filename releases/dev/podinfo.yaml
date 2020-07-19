@@ -15,8 +15,8 @@ spec:
     ref: master
   values:
     image:
-      repository: podinfo
-      tag: stefanprodan/podinfo:3.2.4
+      repository: stefanprodan/podinfo
+      tag: 3.2.4
     replicaCount: 1
     hpa:
       enabled: false
