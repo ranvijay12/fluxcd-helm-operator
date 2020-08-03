@@ -37,8 +37,8 @@ Common labels
 {{- define "webservice.labels" -}}
 helm.sh/chart: {{ include "webservice.chart" . }}
 {{ include "webservice.selectorLabels" . }}
-{{- if .Chart.AppVersion }}
-app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+{{- if .Chart.Version }}
+app.kubernetes.io/version: {{ .Chart.Version | quote }}
 {{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end }}
@@ -49,6 +49,8 @@ Selector labels
 {{- define "webservice.selectorLabels" -}}
 app.kubernetes.io/name: {{ include "webservice.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
+app: {{ include "webservice.name" . }}
+name: {{ include "webservice.name" .}}
 {{- end }}
 
 {{/*
