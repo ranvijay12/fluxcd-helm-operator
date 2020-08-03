@@ -11,6 +11,8 @@ spec:
     path: webservice
     ref: master
   values:
+    fullnameOverride: busybox
+    nameOverride: busybox
     image:
       repository: nginx
       tag: latest
