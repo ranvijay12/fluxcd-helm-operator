@@ -30,6 +30,12 @@ ports:
       containerPort: 9080
       protocol: tcp
 
+
+annotations:
+        prometheus.io/path: "/cns/prometheus"
+        prometheus.io/port: "9560"
+        prometheus.io/scrape: "true"
+
 serviceAccount:
   # Specifies whether a service account should be created
   create: true
