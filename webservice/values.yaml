@@ -22,6 +22,14 @@ readiness:
    port: 122
    path: /ready
 
+ports:
+    - name: http
+      containerPort: 80
+      protocol: tcp
+    - name: http
+      containerPort: 9080
+      protocol: tcp
+
 serviceAccount:
   # Specifies whether a service account should be created
   create: true
