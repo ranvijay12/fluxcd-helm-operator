@@ -47,7 +47,6 @@ Selector labels
 app.kubernetes.io/name: {{ include "webservice.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 app: {{ include "webservice.name" . }}
-name: {{ include "webservice.name" .}}
 {{- end }}
 
 {{/*

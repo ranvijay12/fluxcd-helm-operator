@@ -36,6 +36,15 @@ annotations:
         prometheus.io/port: "9560"
         prometheus.io/scrape: "true"
 
+pv:
+  enabled: true
+  storage:  2Gi
+  accessmode: ReadWriteOnce
+  pvr: Reclaim
+  path : /home/ubuntu/mnt/  #path for pv node
+  key: app         # label for pv node
+  nodevalue: test  #value of label for pv node
+
 serviceAccount:
   # Specifies whether a service account should be created
   create: true

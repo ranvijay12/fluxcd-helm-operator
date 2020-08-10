@@ -1,0 +1,26 @@
+{{- if .Values.pv.enabled }}
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ include "webservice.fullname" . }}
+  labels:
+    {{- include "webservice.labels" . | nindent 4 }}
+spec:
+  capacity:
+    storage: {{ .Values.pv.storage }}
+  # volumeMode field requires BlockVolume Alpha feature gate to be enabled.
+  volumeMode: Filesystem
+  accessModes:
+  - {{ .Values.pv.accessmode }}
+  persistentVolumeReclaimPolicy: {{ .Values.pv.pvr }}
+  local:
+    path: {{ .Values.pv.path }}{{ include "webservice.fullname" . }}
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: {{ .Values.pv.key }}
+          operator: In
+          values:
+          - {{ .Values.pv.nodevalue }}
+{{- end }}
