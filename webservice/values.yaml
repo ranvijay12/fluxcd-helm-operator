@@ -15,12 +15,23 @@ nameOverride: ""
 fullnameOverride: ""
 
 liveness:
+   enabled: true
    port:  123
    path: /health
 
 readiness:
+   enabled: false     
    port: 122
    path: /ready
+
+
+configMap:
+ enabled: true
+ data:
+  foo: bar
+  hello: world
+
+initContainers: {}
 
 ports:
     - name: http
@@ -31,6 +42,28 @@ ports:
       protocol: tcp
 
 
+env:
+          - name: cluster.name
+            value: k8s-logs
+          - name: NAMESPACE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace 
+          - name: node.name
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
+          - name: discovery.seed_hosts
+            value: "es-cluster-0.elasticsearch"
+          - name: cluster.initial_master_nodes
+            value: "es-cluster-0"
+          - name: ES_JAVA_OPTS
+            value: "-Xms248m -Xmx248m"
+          - name: PROCESSORS
+            valueFrom:
+              resourceFieldRef:
+               resource: limits.cpu
+     
 annotations:
         prometheus.io/path: "/cns/prometheus"
         prometheus.io/port: "9560"

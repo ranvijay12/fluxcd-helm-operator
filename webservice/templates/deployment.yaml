@@ -40,15 +40,29 @@ spec:
           - name: {{ .name }}
             containerPort: {{ .containerPort }}
             protocol: {{ .protocol }}
-          {{- end }}  
+          {{- end }}
+          env:
+            {{- toYaml .Values.env | nindent 12 }}
+            - name: POD_NAME
+              valueFrom:
+               fieldRef:
+                fieldPath: metadata.name
+            - name: POD_NAMESPACE
+              valueFrom:
+               fieldRef:
+                fieldPath: metadata.namespace
+         {{- if .Values.liveness.enabled }}       
           livenessProbe:
             httpGet:
               path: {{ .Values.liveness.path }}
               port: {{ .Values.liveness.port }}
+         {{- end }}     
+         {{- if .Values.readiness.enabled }}
           readinessProbe:
             httpGet:
               path: {{ .Values.readiness.path }}
               port: {{ .Values.readiness.port }}
+         {{- end }}     
           resources:
             limits:
               cpu: {{ .Values.resources.limits.cpu }}
