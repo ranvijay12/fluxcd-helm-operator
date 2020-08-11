@@ -11,7 +11,7 @@ image:
   tag: latest
 
 imagePullSecrets: []
-nameOverride: ""
+nameOverride: gms
 fullnameOverride: ""
 
 liveness:
@@ -31,7 +31,15 @@ configMap:
   foo: bar
   hello: world
 
-initContainers: {}
+initContainers:
+    enable: true
+    data:    
+    - name: init-myservice
+      image: busybox:1.28
+      command: ['sh', '-c', "until nslookup myservice.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for myservice; sleep 2; done"]
+    - name: init-mydb
+      image: busybox:1.28
+      command: ['sh', '-c', "until nslookup mydb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for mydb; sleep 2; done"]
 
 ports:
     - name: http
@@ -65,7 +73,7 @@ env:
                resource: limits.cpu
      
 annotations:
-        prometheus.io/path: "/cns/prometheus"
+        prometheus.io/path: "/gms/prometheus"
         prometheus.io/port: "9560"
         prometheus.io/scrape: "true"
 
