@@ -47,6 +47,13 @@ spec:
           {{- end }}
           env:
             {{- toYaml .Values.env | nindent 12 }}
+            {{- range $.Values.configmapDeployment }}
+            - name: configmap
+              valueFrom:
+                configMapRef:
+                  name: {{ .Values.configmapDeployment.key }}
+                  key:  {{ .Values.configmapDeployment.value }}        
+            {{- end}}
             - name: POD_NAME
               valueFrom:
                fieldRef:
@@ -60,12 +67,18 @@ spec:
             httpGet:
               path: {{ .Values.liveness.path }}
               port: {{ .Values.liveness.port }}
+            initialDelaySeconds: {{ .Values.liveness.initialDelaySeconds }}
+            periodSeconds: {{ .Values.liveness.periodSeconds }}
+            timeoutSeconds: {{ .Values.liveness.timeoutSeconds }}
          {{- end }}     
          {{- if .Values.readiness.enabled }}
           readinessProbe:
             httpGet:
               path: {{ .Values.readiness.path }}
               port: {{ .Values.readiness.port }}
+            initialDelaySeconds: {{ .Values.liveness.initialDelaySeconds }}
+            periodSeconds: {{ .Values.liveness.periodSeconds }}
+            timeoutSeconds: {{ .Values.liveness.timeoutSeconds }}
          {{- end }}     
           resources:
             limits:

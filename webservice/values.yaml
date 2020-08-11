@@ -18,18 +18,26 @@ liveness:
    enabled: true
    port:  123
    path: /health
+   initialDelaySeconds: 20
+   periodSeconds: 1
+   timeoutSeconds: 20
 
 readiness:
    enabled: false     
    port: 122
    path: /ready
-
+   initialDelaySeconds: 20
+   periodSeconds: 1
+   timeoutSeconds: 20
 
 configMap:
  enabled: true
  data:
   foo: bar
   hello: world
+
+ConfigmapDeployment:  
+      - key: test   
 
 initContainers:
     enable: true
