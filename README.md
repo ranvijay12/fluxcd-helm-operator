@@ -6,7 +6,8 @@ fluctl identity  //to get public key of flux ,to put through in repo
 
 helm repo add fluxcd https://charts.fluxcd.io
 
-install fluxcd 
+install fluxcd :
+
 helm upgrade -i flux fluxcd/flux --wait \
 --namespace fluxcd \
 --set git.url=git@github.com:ranvijay12/fluxcd-helm-operator.git
