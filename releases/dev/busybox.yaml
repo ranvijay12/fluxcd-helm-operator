@@ -19,6 +19,9 @@ spec:
     image:
       repository: nginx
       tag: latest
+    service:
+      type: NodePort
+      port: 80  
     replicaCount: 1
     hpa:
       enabled: false
