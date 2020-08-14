@@ -16,6 +16,14 @@ spec:
   rollback:
     enable: true
   values:
+    initContainers:
+      enable: true
+      data: 
+      - name: init
+        image: alpine:3.10
+        command:
+        - sleep
+        - "1"
     nameOverride: podinfo
     fullnameOverride: podinfo
     annotations:
