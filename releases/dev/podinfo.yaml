@@ -13,6 +13,8 @@ spec:
     git: git@github.com:ranvijay12/fluxcd-helm-operator.git
     path: webservice
     ref: master
+  rollback:
+    enable: true
   values:
     annotations:
         prometheus.io/port: "9797"
