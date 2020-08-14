@@ -40,7 +40,7 @@ ConfigmapDeployment:
       - key: test   
 
 initContainers:
-    enable: true
+    enable: false
     data:    
     - name: init-myservice
       image: busybox:1.28
