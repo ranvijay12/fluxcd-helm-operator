@@ -12,6 +12,7 @@ spec:
     ref: master
   rollback:
      enable: true
+     wait: false
   values:
     fullnameOverride: nginx
     nameOverride: nginx
