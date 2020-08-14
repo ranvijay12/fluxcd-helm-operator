@@ -10,6 +10,8 @@ spec:
     git: git@github.com:ranvijay12/fluxcd-helm-operator.git
     path: webservice
     ref: master
+  rollback:
+     enable: true
   values:
     fullnameOverride: nginx
     nameOverride: nginx
