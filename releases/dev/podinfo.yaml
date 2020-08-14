@@ -16,6 +16,8 @@ spec:
   rollback:
     enable: true
   values:
+    nameOverride: podinfo
+    fullnameOverride: podinfo
     annotations:
         prometheus.io/port: "9797"
         prometheus.io/scrape: "true"
