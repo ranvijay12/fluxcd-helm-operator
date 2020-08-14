@@ -36,11 +36,11 @@ spec:
     replicaCount: 1
     liveness:
       enabled: true
-      port:  9797
+      port:  9898
       path: /healthz
     readiness:
       enabled: true
-      port: 9797
+      port: 9898
       path: /readyz
     hpa:
       enabled: false
