@@ -11,12 +11,23 @@ spec:
   releaseName: podinfo-dev
   chart:
     git: git@github.com:ranvijay12/fluxcd-helm-operator.git
-    path: charts/podinfo
+    path: webservice
     ref: master
   values:
+    annotations:
+        prometheus.io/port: "9797"
+        prometheus.io/scrape: "true"
     image:
       repository: stefanprodan/podinfo
       tag: dev-hdtwcel9
-    replicaCount: 0
+    replicaCount: 1
+    liveness:
+      enabled: true
+      port:  9797
+      path: /health
+    readiness:
+      enabled: true
+      port: 9797
+      path: /ready 
     hpa:
       enabled: false
