@@ -57,6 +57,19 @@ ports:
       containerPort: 9080
       protocol: tcp
 
+commands:
+   enabled: true
+      values:
+        - ./podinfo
+        - --port=9898
+        - --port-metrics=9797
+        - --grpc-port=9999
+        - --grpc-service-name=podinfo
+        - --level=info
+        - --random-delay=false
+        - --random-error=false
+        - --ui-message='Welcome to Flux'
+
 
 env:
           - name: cluster.name
