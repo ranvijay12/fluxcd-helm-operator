@@ -26,10 +26,27 @@ spec:
     liveness:
       enabled: true
       port:  9797
-      path: /health
+      path: /healthz
     readiness:
       enabled: true
       port: 9797
-      path: /ready 
+      path: /readyz
     hpa:
       enabled: false
+    ports:
+        - name: http
+          containerPort: 9898
+          protocol: TCP
+        - name: http-metrics
+          containerPort: 9797
+          protocol: TCP
+        - name: grpc
+          containerPort: 9999
+          protocol: TCP
+    resources:
+          limits:
+            cpu: 1000m
+            memory: 128Mi
+          requests:
+            cpu: 10m
+            memory: 64Mi    
