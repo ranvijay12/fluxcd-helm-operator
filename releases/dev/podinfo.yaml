@@ -15,6 +15,7 @@ spec:
     ref: master
   rollback:
     enable: true
+    wait: false
   values:
     initContainers:
       enable: true
