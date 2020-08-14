@@ -58,38 +58,37 @@ ports:
       protocol: tcp
 
 env:
-          - name: cluster.name
-            value: k8s-logs
-          - name: NAMESPACE
-            valueFrom:
-              fieldRef:
-                fieldPath: metadata.namespace 
-          - name: node.name
-            valueFrom:
-              fieldRef:
-                fieldPath: metadata.name
-          - name: discovery.seed_hosts
-            value: "es-cluster-0.elasticsearch"
-          - name: cluster.initial_master_nodes
-            value: "es-cluster-0"
-          - name: ES_JAVA_OPTS
-            value: "-Xms248m -Xmx248m"
-          - name: PROCESSORS
-            valueFrom:
-              resourceFieldRef:
-               resource: limits.cpu
+    - name: cluster.name
+      value: k8s-logs
+    - name: NAMESPACE
+      valueFrom:
+         fieldRef:
+           fieldPath: metadata.namespace 
+    - name: node.name
+      valueFrom:
+         fieldRef:
+           fieldPath: metadata.name
+          #- name: discovery.seed_hosts
+           # value: "es-cluster-0.elasticsearch"
+          #- name: cluster.initial_master_nodes
+           # value: "es-cluster-0"
+          #- name: ES_JAVA_OPTS
+           # value: "-Xms248m -Xmx248m"
+          #- name: PROCESSORS
+           # valueFrom:
+            #  resourceFieldRef:
+             #  resource: limits.cpu
 
 commands:
         enabled: false     
 
 
 annotations:
-        prometheus.io/path: "/gms/prometheus"
         prometheus.io/port: "9560"
         prometheus.io/scrape: "true"
 
 pv:
-  enabled: true
+  enabled: false
   storage:  2Gi
   accessmode: ReadWriteOnce
   pvr: Reclaim
