@@ -164,7 +164,7 @@ hpa:
 
 #virtual-service entry
 vs:
-  enable: true
+  enable: false
   host: "*"
   gateway: dev-gateway
   prefix: nginx
