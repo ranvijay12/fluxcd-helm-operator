@@ -40,6 +40,16 @@ spec:
       containerPort: 80
       protocol: TCP
     annotations:
-        prometheus.io/path: "/nginx/prometheus"
-        prometheus.io/port: "80"
-        prometheus.io/scrape: "true" 
+      prometheus.io/path: "/nginx/prometheus"
+      prometheus.io/port: "80"
+      prometheus.io/scrape: "true"
+    vs:
+      enable: true
+      #host name/dns name 
+      host: "*"
+      #gateway used by this svc to communicate from outside of cluster
+      gateway: dev-gateway
+      #prefix is the path attached to the host
+      prefix: nginx
+      destination:
+        port: 80    
