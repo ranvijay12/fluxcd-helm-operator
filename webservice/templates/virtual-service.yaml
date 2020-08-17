@@ -1,0 +1,25 @@
+{{- if .Values.vs.enable }}
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: {{ include "webservice.fullname" . }}
+  labels:
+    {{- include "webservice.labels" . | nindent 4 }}
+  annotations:
+    {{- toYaml .Values.annotations | nindent 4}} 
+  namespace: {{ .Values.namespace}}
+spec:
+  hosts:
+  - "{{ .Values.vs.host }}"
+  gateways:
+  - {{ .Values.vs.gateway }}
+  http:
+  - match:
+    - uri:
+        prefix: /{{ .Values.vs.prefix }}
+    route:
+    - destination:
+        port:
+          number: {{ .Values.vs.destination.port}}
+        host: {{ include "webservice.fullname" . }}
+{{- end}}

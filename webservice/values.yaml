@@ -162,6 +162,15 @@ hpa:
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
+#virtual-service entry
+vs:
+  enable: true
+  host: "*"
+  gateway: dev-gateway
+  prefix: nginx
+  destination:
+     port: 80
+
 nodeSelector: {}
 
 tolerations: []
