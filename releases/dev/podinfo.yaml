@@ -34,6 +34,18 @@ spec:
       repository: stefanprodan/podinfo
       tag: dev-hdtwcel9
     replicaCount: 1
+    command:
+        enable: true   
+        data:
+        - ./podinfo
+        - --port=9898
+        - --port-metrics=9797
+        - --grpc-port=9999
+        - --grpc-service-name=podinfo
+        - --level=info
+        - --random-delay=false
+        - --random-error=false
+        - --ui-message='Welcome to Flux'
     liveness:
       enabled: true
       port:  9898
