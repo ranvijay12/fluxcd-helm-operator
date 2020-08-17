@@ -58,6 +58,23 @@ spec:
       path: /readyz
     hpa:
       enabled: false
+    service:
+      type: ClusterIP
+      data:
+      - port: 9898
+        targetPort: 9898
+        protocol: TCP
+        name: http
+    vs:
+      enable: true
+      #host name/dns name 
+      host: "*"
+      #gateway used by this svc to communicate from outside of cluster
+      gateway: dev-gateway
+      #prefix is the path attached to the host
+      prefix: podinfo
+      destination:
+        port: 9898
     ports:
         - name: http
           containerPort: 9898
@@ -74,4 +91,4 @@ spec:
             memory: 128Mi
           requests:
             cpu: 10m
-            memory: 64Mi    
+            memory: 64Mi       
