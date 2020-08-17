@@ -45,10 +45,6 @@ spec:
             containerPort: {{ .containerPort }}
             protocol: {{ .protocol }}
           {{- end }}
-          {{- if .Values.commands.enabled }}
-          commands:
-          {{- toYaml .Values.enabled.values | nindent 12}}
-          {{- end}}
           env:
             {{- toYaml .Values.env | nindent 12 }}
             {{- range $.Values.configmapDeployment }}
@@ -67,6 +63,10 @@ spec:
                fieldRef:
                 fieldPath: metadata.namespace
          {{- if .Values.liveness.enabled }}       
+         {{- if .Values.command.enable }}
+          command:
+             {{- toYaml .Values.command.data | nindent 12}}     
+         {{- end}}         
           livenessProbe:
             httpGet:
               path: {{ .Values.liveness.path }}

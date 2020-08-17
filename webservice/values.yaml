@@ -49,6 +49,14 @@ initContainers:
       image: busybox:1.28
       command: ['sh', '-c', "until nslookup mydb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for mydb; sleep 2; done"]
 
+
+command:
+       enable: true
+       data:
+        - ./podinfo
+        - --port=9898
+        - --port-metrics=9797
+        - --grpc-port=9999
 ports:
     - name: http
       containerPort: 80
