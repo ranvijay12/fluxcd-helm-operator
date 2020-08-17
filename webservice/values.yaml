@@ -30,12 +30,15 @@ readiness:
    periodSeconds: 1
    timeoutSeconds: 20
 
+   #creating config map   
 configMap:
  enabled: true
  data:
   foo: bar
   hello: world
 
+
+  #using configmap
 ConfigmapDeployment:  
       - key: test   
 
@@ -51,7 +54,7 @@ initContainers:
 
 
 command:
-       enable: true
+       enable: false
        data:
         - ./podinfo
         - --port=9898
@@ -60,9 +63,6 @@ command:
 ports:
     - name: http
       containerPort: 80
-      protocol: tcp
-    - name: http
-      containerPort: 9080
       protocol: tcp
 
 env:
@@ -128,7 +128,11 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 80
+  data:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+    name: http
 
 ingress:
   enabled: false

@@ -8,10 +8,12 @@ metadata:
     {{- toYaml .Values.annotations | nindent 4}}      
 spec:
   type: {{ .Values.service.type }}
+  {{- range $.Values.service.data}}
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: http
-      protocol: TCP
-      name: http
+    - port: {{ .port }}
+      targetPort: {{ .targetPort}}
+      protocol: {{ .protocol}}
+      name: {{ .name}}
+  {{- end}}    
   selector:
     {{- include "webservice.selectorLabels" . | nindent 4 }}
