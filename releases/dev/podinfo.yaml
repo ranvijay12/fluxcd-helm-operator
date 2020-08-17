@@ -30,6 +30,9 @@ spec:
     annotations:
         prometheus.io/port: "9797"
         prometheus.io/scrape: "true"
+    env:
+        - name: PODINFO_UI_COLOR
+          value: "#34577c"
     image:
       repository: stefanprodan/podinfo
       tag: dev-hdtwcel9
