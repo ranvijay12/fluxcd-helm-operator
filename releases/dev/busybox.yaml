@@ -20,8 +20,12 @@ spec:
       repository: nginx
       tag: latest
     service:
-      type: NodePort
-      port: 80  
+      type: ClusterIP
+      data:
+      - port: 80
+        targetPort: 80
+        protocol: TCP
+        name: http    
     replicaCount: 1
     hpa:
       enabled: false
