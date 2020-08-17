@@ -9,8 +9,6 @@ metadata:
     {{- toYaml .Values.annotations | nindent 4}} 
   namespace: {{ .Values.namespace}}
 spec:
-  selector:
-     istio: ingressgateway
   hosts:
   - "{{ .Values.vs.host }}"
   gateways:
