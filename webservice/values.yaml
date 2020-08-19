@@ -167,7 +167,6 @@ vs:
   enable: false
   host: "*"
   gateway: dev-gateway
-  prefix: nginx
   rewrite-uri: /
   prefix-uri: /nginx
   destination:
