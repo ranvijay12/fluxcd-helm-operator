@@ -167,7 +167,9 @@ vs:
   enable: false
   host: "*"
   gateway: dev-gateway
+  #rewrite-uri is the context/path , on which svc is listening
   rewrite-uri: /
+  # prefix-uri is the path at which u want client to request this svc 
   prefix-uri: /nginx
   destination:
      port: 80
