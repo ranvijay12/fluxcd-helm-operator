@@ -18,7 +18,7 @@ spec:
     - uri:
         prefix: /{{ .Values.vs.prefix-uri }}
     rewrite:
-    - uri: {{ .Values.vs.rewrite-uri}}
+      uri: {{ .Values.vs.rewrite-uri}}
     route:
     - destination:
         port:
