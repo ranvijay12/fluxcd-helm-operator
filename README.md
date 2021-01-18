@@ -18,8 +18,8 @@ check helm version - helm version
 helm repo add fluxcd https://charts.fluxcd.io
 
 helm upgrade -i flux fluxcd/flux --wait \
---namespace fluxcd \                                                  #####create this namespace with in kube cluster
---set git.url=git@github.com:ranvijay12/fluxcd-helm-operator.git      #####path of repo where ur charts and helmrelease file is stored 
+--namespace fluxcd \                                                  #####create this namespace with in kube cluster######
+--set git.url=git@github.com:ranvijay12/fluxcd-helm-operator.git      #####path of repo where ur charts and helmrelease file is stored #######
 
 3) kubectl apply -f https://raw.githubusercontent.com/fluxcd/helm-operator/1.1.0/deploy/crds.yaml
 
