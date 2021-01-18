@@ -7,9 +7,7 @@ fluxctl identity  //to get public key of flux ,to put through in repo
 Steps:
 1) install helm3 :
 
-curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
-chmod 700 get_helm.sh
-./get_helm.sh
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 && chmod 700 get_helm.sh &&./get_helm.sh
 
 check helm version - helm version
 
