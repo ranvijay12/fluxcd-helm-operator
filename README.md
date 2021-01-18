@@ -23,6 +23,12 @@ Pre-requisite -
  
 helm upgrade -i flux fluxcd/flux --wait --namespace fluxcd  --set git.url=git@github.com:ranvijay12/fluxcd-helm-operator.git     
 
+after flux is deployed - update its deployment file with an nginx side car with a ssl cert 
+
+### curl -v -u fluxctl:"xxxxx" http://domain-name-assigned-to-nginx-container/api/flux/v6/services\?namespace\=test | jq '.[] | select(.ID=="glp2-nf1:deployment/dep-name")'
+
+use above command to get deployment status .
+
 3) kubectl apply -f https://raw.githubusercontent.com/fluxcd/helm-operator/1.1.0/deploy/crds.yaml
 
 4) install helm operator for flucd
