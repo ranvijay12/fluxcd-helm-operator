@@ -23,8 +23,11 @@ helm upgrade -i flux fluxcd/flux --wait --namespace fluxcd  --set git.url=git@gi
 
 after flux is deployed - update its deployment file with an nginx side car with a ssl cert 
 
-### curl -v -u fluxctl:"xxxxx" http://domain-name-assigned-to-nginx-container/api/flux/v6/services\?namespace\=test | jq '.[] | select(.ID=="glp2-nf1:deployment/dep-name")'
-
+##
+curl -v -u fluxctl:"xxxxx" http://<domain-name-assigned-to-nginx-container>/api/flux/v6/services\?namespace\=test | jq '.[] | select(.ID=="glp2-nf1:deployment/dep-name")'
+ 
+or expose flux container through ingress via load balancer or expose flux service via nodeport
+flux listen on 9898 
 use above command to get deployment status .
 
 3) kubectl apply -f https://raw.githubusercontent.com/fluxcd/helm-operator/1.1.0/deploy/crds.yaml
