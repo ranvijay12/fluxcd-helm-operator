@@ -36,6 +36,24 @@ helm repo add fluxcd https://charts.fluxcd.io
 <b>command:</b> 
 helm upgrade -i flux fluxcd/flux --wait --namespace fluxcd  --set git.url=git@github.com:ranvijay12/fluxcd-helm-operator.git  git-branch=master git-path=releases/dev
 
+<b>arguments available in fluxcd:</b>
+ args:
+    - --manifest-generation=true
+    - --memcached-hostname=weave-flux-memcached.flux-system
+    - --memcached-service=
+    - --git-poll-interval=1m
+    - --sync-interval=1m
+    - --ssh-keygen-dir=/var/fluxd/keygen
+    - --k8s-allow-namespace=ns
+    - --git-url=url
+    - --git-branch=branch
+    - --git-path=folder
+    - --log-format=fmt
+    - --registry-ecr-region=region         ##if using ecr
+    - --registry-ecr-include-id=accountid  ##if using ecr
+    
+<b>Note:in flux v1, a flux pod in a namespace can only sync a single path and a single repo</b>
+
 <b>Additional steps, you can ignore: </b>
 if you want to receive any notifications from flux regarding your deployment, you can follow below steps:
  
