@@ -4,8 +4,11 @@ This is to show you how u can easily install flux with helm operator and use it 
 To install flux client :
 
 sudo snap install fluxctl --classic      ## to install flux on linux
-export FLUX_FORWARD_NAMESPACE=<flux-ns>  ## namespace of kube cluster where flux is delpoyed
+
+export FLUX_FORWARD_NAMESPACE=flux-ns    ## namespace of kube cluster where flux is delpoyed
+ 
 fluxctl list-workloads 
+ 
 fluxctl identity                         ## to get public key of flux ,to put through in repo
 
 Steps to install flux with helm operator :
