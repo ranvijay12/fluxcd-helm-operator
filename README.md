@@ -1,4 +1,4 @@
-
+<pre>
 This is to show you how u can easily install flux with helm operator and use it for GitOps. Steps are taken from official Flux Documentation with added explaination of few steps which I found a bit difficult from the official documentation.This document is only for linux users.
 
 To install flux client :
@@ -73,7 +73,7 @@ releases -|
           | -> prd -> podinfo.yaml
 
 Note: charts are being updated 
-
+</pre>
 
 
 
