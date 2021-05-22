@@ -58,7 +58,7 @@ helm upgrade -i helm-operator fluxcd/helm-operator --wait \
 
 5) Create chart and helm release file 
 
-Create a chart in current repo 
+Create a chart in current repo   ##we have created chart named <b> webservice </b> in this repo
 chart -|
        | -> templates
        | -> Chart.yaml
