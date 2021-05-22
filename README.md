@@ -34,7 +34,7 @@ helm repo add fluxcd https://charts.fluxcd.io
    - you can separate the chart repo from helmrelease repo or you can store both in same repo 
 
 <b>command:</b> 
-helm upgrade -i flux fluxcd/flux --wait --namespace fluxcd  --set git.url=git@github.com:ranvijay12/fluxcd-helm-operator.git     
+helm upgrade -i flux fluxcd/flux --wait --namespace fluxcd  --set git.url=git@github.com:ranvijay12/fluxcd-helm-operator.git  git-branch=master git-path=releases/dev
 
 <b>Additional steps, you can ignore: </b>
 if you want to receive any notifications from flux regarding your deployment, you can follow below steps:
